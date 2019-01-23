@@ -21,5 +21,5 @@ Using **Grid Search**, I optimized/tuned the hyperparameters for our Neural Netw
 
 While trying to find out the best parameters through Grid Search and KFold Cross Validation, I found out that ***The accuracy on training dataset was higher than accuracy on cross validation set, implying Overfitting, So I used Regularization to overcome that by tuning the droput rate*** . 
 
-Overall, ***the model chowed an accuracy of 79%***
+Overall, ***the model showed an accuracy of 79%***
  
