@@ -6,7 +6,7 @@ The objective of the dataset is to diagnostically predict whether or not a patie
 ## DATASET PREPROCESSING
 There were initially 700+ records but some records had _glucose, bmi, skin thickness, insulin,blood pressure equal to zero which makes no sense._ So those records were removed and left was some 320 records.
 
-Also the dataset had a problem that _some attributes on dataset had values in very different ranges; Example:no of pregnancy from 0 to 17 while insulin level from 14 to 846_ So to prevent heavy weighing of one variable over other just because of variable's size, **the data had to be standardized**.
+Also the dataset had a problem that _some attributes on dataset had values in very different ranges; Example:no of pregnancy from 0 to 17 while insulin level from 14 to 846_ So to prevent heavy weighing of one variable over other just because of variable's size, **the data had to be [standardized](https://medium.com/@rrfd/standardize-or-normalize-examples-in-python-e3f174b65dfc)**.
 
 ## RESULTS
 Using **Grid Search**, I optimized/tuned the hyperparameters for our Neural Network Model:
