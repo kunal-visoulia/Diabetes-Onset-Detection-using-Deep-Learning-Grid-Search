@@ -11,18 +11,26 @@ Also the dataset had a problem that _some attributes on dataset had values in ve
 ## RESULTS
 Using **Grid Search**, I optimized/tuned the hyperparameters(selecting the best one from specified) for our Neural Network Model:
 
-- Batch Size
-- Number of Epochs
-- Learning Rate
-- Dropout Rate(Regularization) 
-- Kernel Initializors(uniform/normal/zero)
-- Activation Functions(softmax/relu/tanh/linear)
-- Number of Neurons in each hidden layer(in the two layers of model)
+- [Batch Size](#batch-size)
+- [Number of Epochs](#number-of-epochs)
+- [Learning Rate](#learning-rate)
+- Dropout Rate(Regularization)](#dropout-rate)
+- [Kernel Initializors(uniform/normal/zero)](#kernel-initializors)
+- [Activation Functions(softmax/relu/tanh/linear)](#activation-functions)
+- [Number of Neurons in each hidden layer](#number-of-neurons-in-each-hidden-layer)(in the two layers of model)
 
 While trying to find out the best parameters through Grid Search and KFold Cross Validation, I found out that ***The accuracy on training dataset was higher than accuracy on cross validation set, implying Overfitting, So I used Regularization to overcome that by tuning the droput rate*** . 
 
 Overall, ***the model showed an classification accuracy of 79%***
 
-###DEEP LEARNING
-###GRID SEARCH CV
-###KFOLD (UPDATE PREV REPO)
+### DEEP LEARNING
+### GRID SEARCH CV
+### KFOLD (UPDATE PREV REPO)
+
+### Batch Size
+### Number of Epochs
+### Learning Rate
+### Dropout Rate
+### Kernel Initializers
+### Activation Functions
+### Number of Neurons in each hidden layer
