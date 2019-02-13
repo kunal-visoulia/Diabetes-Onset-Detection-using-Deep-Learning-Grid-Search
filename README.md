@@ -14,9 +14,9 @@ Using **Grid Search**, I optimized/tuned the hyperparameters(selecting the best 
 - [Batch Size](#batch-size)
 - [Number of Epochs](#number-of-epochs)
 - [Learning Rate](#learning-rate)
-- [Dropout Rate(Regularization)](#dropout-rate)
-- [Kernel Initializors](uniform/normal/zero)(#kernel-initializors)
-- [Activation Functions](softmax/relu/tanh/linear)(#activation-functions)
+- [Dropout Rate (Regularization)](#dropout-rate)
+- [Kernel Initializors (uniform/normal/zero)](#kernel-initializors)
+- [Activation Functions (softmax/relu/tanh/linear)](#activation-functions)
 - [Number of Neurons in each hidden layer](#number-of-neurons-in-each-hidden-layer)(in the two layers of model)
 
 While trying to find out the best parameters through Grid Search and KFold Cross Validation, I found out that ***The accuracy on training dataset was higher than accuracy on cross validation set, implying Overfitting, So I used Regularization to overcome that by tuning the droput rate*** . 
