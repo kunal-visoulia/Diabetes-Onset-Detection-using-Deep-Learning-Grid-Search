@@ -59,12 +59,12 @@ In the Brain, at a simplistic level, a neuron is a computational unit that gets 
 **FOR OVERSIMPLIFICATION AND UNSERSTANDING PURPOSES: ASSUME g(z) IS THE LOGISTIC/SIGMOID FUNCTION.**
 
 So here are the **computations** represented by the above diagram:<br/>
-<img src="images/5.png" height="330px"/><br/>
+![](images/5.png)<br/>
 
 ##### FORWARD PROPAGATION: VECTORIZED IMPLEMENTATION
 Calculating the value of hypothesis (parameterized by theta), by going from input layer => Hidden Layer(s)(the activation units in them) => output layer, is called Forward Prop.
 
-<img src="images/6.png" height="330px"/><br/>
+![](images/6.png)<br/>
 **The above image is for my notes purposes**
 
 <img src="images/7.png" height="330px"/><br/>
@@ -110,7 +110,7 @@ And thus, when the image is of a pedestrian, we would ideally want the network t
 
 **So this is just like the "one versus all" method that I described in my earlier project on [logistic regression](https://github.com/kunal-visoulia/Classification-Using-Logistic-Regression), and here we have essentially four logistic regression classifiers, each of which is trying to recognize one of the four classes that we want to distinguish amongst**
 
-<img src="images/15.png" height="330px"/><br/>
+![](images/15.png)<br/>
 
 
 ### GRID SEARCH CV
