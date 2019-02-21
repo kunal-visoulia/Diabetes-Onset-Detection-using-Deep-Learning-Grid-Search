@@ -81,7 +81,7 @@ In this example, only two positive examples and two negative examples have been 
 
 ![](images/12.png)<br/>
 **Concretely, label class y = x1 XOR x2; It turns out that these specific examples work out a little bit better if we use x1 XNOR x2 
-Thus, y = 1 when both x1,x2 are either 0(false) or 1(true) and y = 0 if any one of them is 1(true) **
+Thus, y = 1 when both x1,x2 are either 0(false) or 1(true) and y = 0 if any one of them is 1(true)**
 
 By adjusting the weights, and x(input feature vector) values:
 
