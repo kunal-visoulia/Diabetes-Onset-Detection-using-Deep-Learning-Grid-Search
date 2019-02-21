@@ -38,7 +38,7 @@ Example say we have 100 features, x1-x100,, and, **if you were to include all th
 Suppose you want to use machine learning to train a classifier to examine an image and tell whether or not the image is a car. To understand why computer vision is hard let's zoom into a small part of the image like that area where the little red rectangle is. It turns out that where you and I see a car, the computer sees is this matrix, of pixel intensity values that tells us the brightness of each pixel in the image.** So the computer vision problem is to look at this matrix of pixel intensity values, and tell us that these numbers represent the door handle of a car.** <br/>
 ![](images/2.png)<br/>
 
-Keepinf the pixel1 and pixel2 positions same for the dataset, we'll find is that the cars and non-cars end up lying in different regions of the space, and we need non-linear hypotheses to try to separate out the two classes.<br/>
+Keeping the pixel1 and pixel2 positions same for the dataset, we'll find is that the cars and non-cars end up lying in different regions of the space, and we need non-linear hypotheses to try to separate out the two classes.<br/>
 ![](images/3.png)<br/>
 
 If each images is 50x50 pixels, **dimension of feature space,N = 2500(for grayscale; 7500 for 3 channel RGB)**<br/>
@@ -93,7 +93,7 @@ By adjusting the weights, and x(input feature vector) values:
 <img src="images/13.png" height="330px"/><br/>
 >And this is a sort of intuition about why neural networks can compute pretty complicated functions.<br/> That when you have multiple layers you have relatively simple function of the inputs of the second layer. But the third layer I can build on that to complete even more complex functions, and then the layer after that can compute even more complex functions.
 
-### NEURAL NETWORKS for MULTI-CLASSIFICATION PROBLEM
+### [NEURAL NETWORKS for MULTI-CLASSIFICATION PROBLEM](https://developers.google.com/machine-learning/crash-course/multi-class-neural-networks/video-lecture)
 For Example:Hand-Written Digit Recognition, 
 
 The way we do multiclass classification in a neural network is essentially an extension of the one versus all method.
@@ -111,6 +111,27 @@ And thus, when the image is of a pedestrian, we would ideally want the network t
 **So this is just like the "one versus all" method that I described in my earlier project on [logistic regression](https://github.com/kunal-visoulia/Classification-Using-Logistic-Regression), and here we have essentially four logistic regression classifiers, each of which is trying to recognize one of the four classes that we want to distinguish amongst**
 
 ![](images/15.png)<br/>
+
+### COST FUNCTION FOR FITTING ANN PARAMETERS
+**here K = number of activation units in output layer**
+![](images/16.png)<br/>
+here we are summing that cost function over each of my K output units in turn.
+
+### BACKPROPAGATION IN ANN
+"Backpropagation" is neural-network terminology for minimizing our cost function, just like what we were doing with gradient descent in logistic and linear regression. 
+
+- **The first thing we do is we apply forward propagation in order to compute whether a hypotheses actually outputs given the input.** So this is our vectorized implementation of forward propagation and it allows us to compute the activation values for all of the neurons in our neural network.<br/>
+<img src="images/17.png" height="330px"/><br/>
+
+- **Next, in order to compute the derivatives, we're going to use back propagation.** <br/>
+<img src="images/18.png" height="330px"/><br/>
+.* = element wise multiplication; red shows vectorized implementation(automatically does an update for all values of i and j.)<br/>
+There is no delta<sup>1</sup> term, because the first layer corresponds to the input layer and that's just the feature we observed in our training sets, so that doesn't have any error associated with that.
+
+<img src="images/19.png" height="330px"/><br/>
+The case of j equals zero corresponds to the bias term so when j equals zero that's why we're missing is an extra regularization term.
+
+<img src="images/20.png" height="330px"/><br/>
 
 
 ### GRID SEARCH CV
