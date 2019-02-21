@@ -51,7 +51,7 @@ The brain does so many different and amazing things. It seems like if you want t
 ##### MODEL REPRESENTATION
 In the Brain, at a simplistic level, a neuron is a computational unit that gets a number of inputs through its input wires(deondrites) and does some computation and then it sends outputs via its axon to other nodes(other neurons in the brain.)
 
-![](images/4.png)<br/>
+<img src="images/4.png" height="330px"/><br/>
 - x = [ x1, x2, x3....]  are inputs and theta = [theta1, theta2, theta3,...]  are the weights/parameters. 
 - Showing x0(the bias unit/the (+1) unit)depends on notation conveniency.
 - Activation function in the neural network terminology is just another term for function for the required non-linearity, g
@@ -59,17 +59,17 @@ In the Brain, at a simplistic level, a neuron is a computational unit that gets 
 **FOR OVERSIMPLIFICATION AND UNSERSTANDING PURPOSES: ASSUME g(z) IS THE LOGISTIC/SIGMOID FUNCTION.**
 
 So here are the **computations** represented by the above diagram:<br/>
-![](images/5.png)<br/>
+<img src="images/5.png" height="330px"/><br/>
 
 ##### FORWARD PROPAGATION: VECTORIZED IMPLEMENTATION
 Calculating the value of hypothesis (parameterized by theta), by going from input layer => Hidden Layer(s)(the activation units in them) => output layer, is called Forward Prop.
 
-![](images/6.png)<br/>
+<img src="images/6.png" height="330px"/><br/>
 **The above image is for my notes purposes**
 
-![](images/7.png)<br/>
+<img src="images/7.png" height="330px"/><br/>
 If you look at the last two layers only, The hypothesis will look a lot like logistic regression where instead of featues x1,x2,x3... we have these features, a1, a2, a3(see image for correct notation) and have capital theta<sup>(2)</sup> instead of lowercase theta. **The features fed into logistic regression(a1,a2..) are these values computed by the hidden layer. *and they themselves are learned as functions of the input.Concretely, the function mapping from layer 1 to layer 2, is determined by some other set of parameters, theta<sup>1</sup>.***<b/>
-![](images/8.png)<br/>
+<img src="images/8.png" height="330px"/><br/>
 
 >Depending on what parameters is choosen for theta<sup>1</sup>, complex features can be learned and therefore you can end up with a better hypotheses than if you were constrained to use the raw features x1, x2 or x3 or if you will constrained to choose the polynomial terms. **But instead, this algorithm has the flexibility to try to learn whatever features at once, using these a1, a2, a3 in order to feed into this last unit that's essentially a logistic regression here.**
 
@@ -79,18 +79,18 @@ In ANN architecture with multiple layers, in each layer we can learn even more c
 Consider the following problem where we have features x1 and x2 that are binary values:<br/>
 In this example, only two positive examples and two negative examples have been drawn. Think of this as a simplified version of a more complex learning problem where we may have a bunch of positive examples in the upper right and lower left and a bunch of negative examples denoted by the circles. **And what we'd like to do is learn a non-linear division of boundary that may need to separate the positive and negative examples.**
 
-![](images/12.png)<br/>
+<img src="images/12.png" height="330px"/><br/>
 **Concretely, label class y = x1 XOR x2; It turns out that these specific examples work out a little bit better if we use x1 XNOR x2 
 Thus, y = 1 when both x1,x2 are either 0(false) or 1(true) and y = 0 if any one of them is 1(true)**
 
 By adjusting the weights, and x(input feature vector) values:
 
-![](images/9.png)<br/>
-![](images/10.png)<br/>
-![](images/11.png)<br/>
+<img src="images/9.png" height="330px"/><br/>
+<img src="images/10.png" height="330px"/><br/>
+<img src="images/11.png" height="330px"/><br/>
 
 **Finally,**<br/>
-![](images/13.png)<br/>
+<img src="images/13.png" height="330px"/><br/>
 >And this is a sort of intuition about why neural networks can compute pretty complicated functions.<br/> That when you have multiple layers you have relatively simple function of the inputs of the second layer. But the third layer I can build on that to complete even more complex functions, and then the layer after that can compute even more complex functions.
 
 ### NEURAL NETWORKS for MULTI-CLASSIFICATION PROBLEM
@@ -100,7 +100,7 @@ The way we do multiclass classification in a neural network is essentially an ex
 
 **Let's say that we have a computer vision example, where we're trying to recognize, four categories of objects: Given an image, decide if it is a pedestrian, a car, a motorcycle or a truck.**<br/>
 
-![](images/14.png)<br/>
+<img src="images/14.png" height="330px"/><br/>
 So, the output now is actually needs to be a vector of four numbers and what we try to do is:
 - get the 1st output unit to classify: is the image a pedestrian, yes or no.
 - get the 2mrd unit to classify: is the image a car, yes or no.
@@ -110,7 +110,7 @@ And thus, when the image is of a pedestrian, we would ideally want the network t
 
 **So this is just like the "one versus all" method that I described in my earlier project on [logistic regression](https://github.com/kunal-visoulia/Classification-Using-Logistic-Regression), and here we have essentially four logistic regression classifiers, each of which is trying to recognize one of the four classes that we want to distinguish amongst**
 
-![](images/15.png)<br/>
+<img src="images/15.png" height="330px"/><br/>
 
 
 ### GRID SEARCH CV
