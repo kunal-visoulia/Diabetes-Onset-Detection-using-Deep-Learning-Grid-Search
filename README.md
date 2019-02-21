@@ -127,6 +127,7 @@ here we are summing that cost function over each of my K output units in turn.
 <img src="images/18.png" height="330px"/><br/>
 .* = element wise multiplication; red shows vectorized implementation(automatically does an update for all values of i and j.)<br/>
 There is no delta<sup>1</sup> term, because the first layer corresponds to the input layer and that's just the feature we observed in our training sets, so that doesn't have any error associated with that.
+>**Note for me**:And by the way, so far I've been writing the delta values only for the hidden units, but excluding the bias units. Depending on how you define the backpropagation algorithm, or depending on how you implement it, you know, you may end up implementing something that computes delta values for these bias units as well. The bias units always output the value of +1, and they are just what they are, and there's no way for us to change the value. And so, depending on your implementation of back prop, the way I usually implement it, I do end up computing these delta values, but we just discard them, we don't use them because they don't end up being part of the calculation needed to compute a derivative
 
 <img src="images/19.png" height="330px"/><br/>
 The case of j equals zero corresponds to the bias term so when j equals zero that's why we're missing is an extra regularization term.
@@ -134,6 +135,19 @@ The case of j equals zero corresponds to the bias term so when j equals zero tha
 <img src="images/20.png" height="330px"/><br/>
  we do forward propagation and backpropagation on one example at a time. 
  
+### GRADIENT CHECKING
+>Back prop as an algorithm has a lot of details and can be a little bit tricky to implement. And one unfortunate property is that there are many ways to have subtle bugs in back prop. So that if you run it with gradient descent or some other optimizational algorithm, it could actually look like it's working. And your cost function, J of theta may end up decreasing on every iteration of gradient descent. *But this could prove true even though there might be some bug in your implementation of back prop*. So that it looks J(theta) is decreasing, but you might just wind up with a neural network that has a higher level of error than you would with a bug free implementation. And you might just not know that there was this subtle bug that was giving you worse performance.<br/>
+So, today every time I implement back propagation or a similar gradient  on a neural network or any other reasonably complex model, I always implement gradient checking. And if you do this, it will help you make sure and sort of gain high confidence that your implementation of four prop and back prop or whatever is 100% correct.
+
+let's say that I want to estimate the derivative of this function at this point and so the derivative is equal to the slope of the tangentat that point. Here's a procedure for numerically approximating the derivative. 
+
+![](images/21.png)<br/>
+This uses the two sided difference(more accurate).
+
+
+
+
+
 
 ### GRID SEARCH CV
 ### KFOLD (UPDATE PREV REPO)
