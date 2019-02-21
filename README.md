@@ -23,7 +23,7 @@ While trying to find out the best parameters through Grid Search and KFold Cross
 
 Overall, ***the model showed an classification accuracy of 79%***
 
-### DEEP LEARNING
+### [DEEP LEARNING](https://towardsdatascience.com/why-deep-learning-is-needed-over-traditional-machine-learning-1b6a99177063)
 #### Non-Linear Hypothesis
 Consider a supervised learning classification problem where you have a training set like this. If you want to apply logistic regression to this problem, one thing you could do is apply logistic regression with a lot of nonlinear features like. <br/>
 ![](images/1.png)<br/>
