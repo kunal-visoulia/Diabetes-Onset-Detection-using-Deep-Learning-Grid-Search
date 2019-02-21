@@ -132,7 +132,8 @@ There is no delta<sup>1</sup> term, because the first layer corresponds to the i
 The case of j equals zero corresponds to the bias term so when j equals zero that's why we're missing is an extra regularization term.
 
 <img src="images/20.png" height="330px"/><br/>
-
+ we do forward propagation and backpropagation on one example at a time. 
+ 
 
 ### GRID SEARCH CV
 ### KFOLD (UPDATE PREV REPO)
