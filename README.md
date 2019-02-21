@@ -68,10 +68,10 @@ Calculating the value of hypothesis (parameterized by theta), by going from inpu
 **The above image is for my notes purposes**
 
 ![](images/7.png)<br/>
-If you look at the last two layers only, The hypothesis will look a lot like logistic regression where instead of featues x1,x2,x3... we have these features, a1, a2, a3(see image for correct notation) and have capital theta<sup>2</sup> instead of lowercase theta. **The features fed into logistic regression(a1,a2..) are these values computed by the hidden layer. *and they themselves are learned as functions of the input.Concretely, the function mapping from layer 1 to layer 2, is determined by some other set of parameters, theta<sup>1</sup>. ***<b/>
+If you look at the last two layers only, The hypothesis will look a lot like logistic regression where instead of featues x1,x2,x3... we have these features, a1, a2, a3(see image for correct notation) and have capital theta<sup>(2)</sup> instead of lowercase theta. **The features fed into logistic regression(a1,a2..) are these values computed by the hidden layer. *and they themselves are learned as functions of the input.Concretely, the function mapping from layer 1 to layer 2, is determined by some other set of parameters, theta<sup>1</sup>.***<b/>
 ![](images/8.png)<br/>
 
->Sepending on what parameters is choosen for theta<sup>1</sup>, complex features can be learned and therefore you can end up with a better hypotheses than if you were constrained to use the raw features x1, x2 or x3 or if you will constrained to choose the polynomial terms. **But instead, this algorithm has the flexibility to try to learn whatever features at once, using these a1, a2, a3 in order to feed into this last unit that's essentially a logistic regression here. **
+>Depending on what parameters is choosen for theta<sup>1</sup>, complex features can be learned and therefore you can end up with a better hypotheses than if you were constrained to use the raw features x1, x2 or x3 or if you will constrained to choose the polynomial terms. **But instead, this algorithm has the flexibility to try to learn whatever features at once, using these a1, a2, a3 in order to feed into this last unit that's essentially a logistic regression here.**
 
 In ANN architecture with multiple layers, in each layer we can learn even more complex features from the input features recieved from previous layer.
 
