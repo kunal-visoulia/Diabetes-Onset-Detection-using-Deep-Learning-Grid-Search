@@ -144,8 +144,12 @@ let's say that I want to estimate the derivative of this function at this point 
 ![](images/21.png)<br/>
 This uses the two sided difference(more accurate).
 
+#### Random Initialization
+Initializing all theta weights to zero does not work with neural networks. When we backpropagate, all nodes will update to the same value repeatedly. Instead we can randomly initialize our weights for our theta matrices using the following method:
 
-
+Concretely, the problem was saw on the previous slide is something called the problem of symmetric ways, that's the ways are being the same. So this random initialization is how we perform symmetry breaking.<br/> 
+![](images/22.png)<br/>
+Hence, we initialize each theta weight to a random value betweem [-epsilon, epsilon] (this epsilon here has nothing to do with the epsilon that we were using when we were doing gradient checking.).
 
 
 
