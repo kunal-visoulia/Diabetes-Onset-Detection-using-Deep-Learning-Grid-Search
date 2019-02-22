@@ -117,7 +117,7 @@ And thus, when the image is of a pedestrian, we would ideally want the network t
 ![](images/16.png)<br/>
 here we are summing that cost function over each of my K output units in turn.
 
-### BACKPROPAGATION IN ANN
+### [BACKPROPAGATION IN ANN](https://medium.com/spidernitt/breaking-down-neural-networks-an-intuitive-approach-to-backpropagation-3b2ff958794c)
 "Backpropagation" is neural-network terminology for minimizing our cost function, just like what we were doing with gradient descent in logistic and linear regression. 
 
 - **The first thing we do is we apply forward propagation in order to compute whether a hypotheses actually outputs given the input.** So this is our vectorized implementation of forward propagation and it allows us to compute the activation values for all of the neurons in our neural network.<br/>
