@@ -22,9 +22,7 @@ Using **Grid Search**, I optimized/tuned the hyperparameters(selecting the best 
 While trying to find out the best parameters through Grid Search and KFold Cross Validation, I found out that ***The accuracy on training dataset was higher than accuracy on cross validation set, implying Overfitting, So I used Regularization to overcome that by tuning the droput rate*** . 
 
 Overall, ***the model showed an classification accuracy of 79%***
-
-### [DEEP LEARNING](https://towardsdatascience.com/why-deep-learning-is-needed-over-traditional-machine-learning-1b6a99177063)
-
+  
 ### GRID SEARCH CV
 ### KFOLD (UPDATE PREV REPO)
 
