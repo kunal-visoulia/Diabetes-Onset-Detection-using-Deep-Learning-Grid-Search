@@ -23,9 +23,27 @@ While trying to find out the best parameters through Grid Search and KFold Cross
 
 Overall, ***the model showed an classification accuracy of 79%***
   
-### GRID SEARCH CV
-### KFOLD (UPDATE PREV REPO)
+### [GridSearchCV]((https://scikit-learn.org/stable/modules/grid_search.html))
+Exhaustive search over specified parameter values for an estimator by considering all parameters combinations.
 
+**[Hyperparameters vs Parameters](https://scikit-learn.org/stable/modules/grid_search.html)**:Hyper-parameters are parameters that are not directly learnt within estimators. In scikit-learn they are passed as arguments to the constructor of the estimator classes. Typical examples include C, kernel and gamma for Support Vector Classifier, alpha for Lasso, etc. A typical set of hyperparameters for NN include the number and size of the hidden layers, weight initialization scheme, learning rate and its decay, dropout and gradient clipping threshold, etc.<br/>
+Parameters are those which would be learned by the machine like Weights and Biases.
+
+### [Defining the Deep Learning model(in Keras)](https://keras.io/getting-started/sequential-model-guide/)
+1. There are two ways to build Keras models: sequential and functional.
+    - The sequential API allows you to create models layer-by-layer for most problems. It is limited in that it does not           allow you to create models that share layers or have multiple inputs or outputs.
+    - The functional API allows you to create models that have a lot more flexibility as you can easily define models where         layers connect to more than just the previous and next layers. In fact, you can connect layers to (literally) any other       layer. As a result, creating complex networks such as siamese networks and residual networks become possible.
+
+2. Specifying the input shape: The model needs to know what input shape it should expect. For this reason, the first layer in a Sequential model (and only the first, because following layers can do automatic shape inference) needs to receive information about its input shape.
+
+3. Compilation:Before training a model, you need to **configure the learning process**, which is done via the compile method. It receives three arguments:
+    - An optimizer. This could be the string identifier of an existing optimizer (such as rmsprop or adagrad), or an instance       of the Optimizer class.
+    - A loss function. This is the objective that the model will try to minimize. It can be the string identifier of an             existing loss function (such as categorical_crossentropy or mse), or it can be an objective function. 
+    - A list of metrics. For any classification problem you will want to set this to metrics=['accuracy']. A metric could be       the string identifier of an existing metric or a custom metric function. 
+    
+>***Keras models are trained on Numpy arrays of input data and labels.***
+
+https://towardsdatascience.com/epoch-vs-iterations-vs-batch-size-4dfb9c7ce9c9
 ### Batch Size
 ### Number of Epochs
 ### Learning Rate
