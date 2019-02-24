@@ -10,6 +10,7 @@ Also the dataset had a problem that _some attributes on dataset had values in ve
 
 ## RESULTS
 Using **Grid Search**, I optimized/tuned the hyperparameters(selecting the best one from specified) for our Neural Network Model:
+https://machinelearningmastery.com/grid-search-hyperparameters-deep-learning-models-python-keras/'
 
 - [Number of Epochs](#number-of-epochs)
 - [Batch Size](#batch-size)
@@ -114,13 +115,34 @@ In machine learning, Regularization reduces over-fitting by adding a penalty to 
 **Testing Phase:** Use all activations, but reduce them by a factor p (to account for the missing activations during training).
 
 >Some Observations:<br/>
-1. Dropout forces a neural network to learn more robust features that are useful in conjunction with many different random subsets of the other neurons.
-2. Dropout roughly doubles the number of iterations required to converge. However, training time for each epoch is less.
-3. With H hidden units, each of which can be dropped, we have 2^H possible models. In testing phase, the entire network is considered and each activation is reduced by a factor p.
+>1. Dropout forces a neural network to learn more robust features that are useful in conjunction with many different random subsets of the other neurons.
+>2. Dropout roughly doubles the number of iterations required to converge. However, training time for each epoch is less.
+>3. With H hidden units, each of which can be dropped, we have 2^H possible models. In testing phase, the entire network is considered and each activation is reduced by a factor p.
 
-### Kernel Initializers
+### [Kernel Initializers](https://machinelearningmastery.com/why-initialize-a-neural-network-with-random-weights/)
+Initializations define the way to set the initial random weights of Keras layers.<br/>
+**Why Not Set Weights to Zero?**<br/>
+We can use the same set of weights each time we train the network; for example, you could use the values of 0.0 for all weights. In this case, the equations of the learning algorithm would fail to make any changes to the network weights, and the model will be stuck. It is important to note that the **bias weight in each neuron is set to zero by default, not a small random value**. Specifically, nodes that are side-by-side in a hidden layer connected to the same inputs must have different weights for the learning algorithm to update the weights. This is often referred to as the need to **break symmetry during training**.
 
 
-### Activation Functions
-![](https://cdn-images-1.medium.com/max/1600/1*p_hyqAtyI8pbt2kEl6siOQ.png)
+
+- Zeros: Initializer that generates tensors initialized to 0.
+- Ones: Initializer that generates tensors initialized to 1.
+- Constant: Initializer that generates tensors initialized to a constant value.
+- RandomNormal: Initializer that generates tensors with a normal distribution.
+- RandomUniform: Initializer that generates tensors with a uniform distribution.
+
+### [Activation Functions](https://towardsdatascience.com/secret-sauce-behind-the-beauty-of-deep-learning-beginners-guide-to-activation-functions-a8e23a57d046)
+![](https://cdn-images-1.medium.com/max/1600/1*p_hyqAtyI8pbt2kEl6siOQ.png)<br/>
+ Activation functions are used to introduce non-linearity to neural networks. It squashes the values in a smaller range viz. a Sigmoid activation function squashes values between a range 0 to 1. 
+
+
+- Identity or Linear Activation Function : simplest activation function of all. It applies identity operation on your data and output data is proportional to the input data. Problem with linear activation function is that it’s derivative is a constant and it’s gradient will be a constant too and the descent will be on a constant gradient.
+- Sigmoid or Logistic activation function(Soft Step)
+- Hyperbolic tangent (TanH):  It looks like a scaled sigmoid function. Data is centered around zero, so the derivatives will be higher. Tanh quickly converges than sigmoid and logistic activation functions
+-  Linear Unit(ReLU) — It trains 6 times faster than tanh. Output value will be zero when input value is less than zero. If input is greater than or equal to zero, output is equal to the input. When the input value is positive, derivative is 1, hence there will be no squeezing effect which occurs in the case of backpropagating errors from the sigmoid function.
+-  Softmax functions convert a raw value into a posterior probability. This provides a measure of certainty. It squashes the outputs of each unit to be between 0 and 1, just like a sigmoid function. But it also divides each output such that the total sum of the outputs is equal to 1. The output of the softmax function is equivalent to a categorical probability distribution, it tells you the probability that any of the classes are true
+>**Conclusion**: ReLU and it’s variants should be preferred over sigmoid or tanh activation functions. As well as ReLUs are faster to train. If ReLU is causing neurons to be dead, use Leaky ReLUs or it’s other variants. Sigmoid and tanh suffers from vanishing gradient problem and should not be used in the hidden layers. ReLUs are best for hidden layers. Activation functions which are easily differentiable and easy to train should be used.
+
 ### Number of Neurons in each hidden layer
+Generally the number of neurons in a layer controls the representational capacity of the network, at least at that point in the topology. Also, generally, a large enough single layer network can approximate any other neural network, at least in theory.
