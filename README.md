@@ -29,9 +29,7 @@ Overall, ***the model showed an classification accuracy of 79%***
 ### [GridSearchCV]((https://scikit-learn.org/stable/modules/grid_search.html))
 Exhaustive search over specified parameter values for an estimator by considering all parameters combinations.
 
-**[Hyperparameters vs Parameters](https://scikit-learn.org/stable/modules/grid_search.html)**:Hyper-parameters are parameters that are not directly learnt within estimators. In scikit-learn they are passed as arguments to the constructor of the estimator classes. Typical examples include C, kernel and gamma for Support Vector Classifier, alpha for Lasso, etc. A typical set of hyperparameters for NN include the number and size of the hidden layers, weight initialization scheme, learning rate and its decay, dropout### Learning Rate
-70
- and gradient clipping threshold, etc.<br/>
+**[Hyperparameters vs Parameters](https://scikit-learn.org/stable/modules/grid_search.html)**:Hyper-parameters are parameters that are not directly learnt within estimators. In scikit-learn they are passed as arguments to the constructor of the estimator classes. Typical examples include C, kernel and gamma for Support Vector Classifier, alpha for Lasso, etc. A typical set of hyperparameters for NN include the number and size of the hidden layers, weight initialization scheme, learning rate and its decay, dropout, Learning Rate and gradient clipping threshold, etc.<br/>
 Parameters are those which would be learned by the machine like Weights and Biases.
 
 ### [Defining the Deep Learning model(in Keras)](https://keras.io/getting-started/sequential-model-guide/)
@@ -140,7 +138,8 @@ One of the most straightforward is initialization of weight and bias values and 
 https://becominghuman.ai/basics-of-neural-network-bef2ba97d2cf
 Biases are weights added to hidden layers. They too are randomly initialised and updated in similar manner as the hidden layer. While the role of hidden layer is to map the shape of the underlying function in the data, the role of bias is to laterally shift the learned function so it overlaps with the original function.
 
-
+https://medium.com/usf-msds/deep-learning-best-practices-1-weight-initialization-14e5c0295b94
+It is important to note that setting biases to 0 will not create any troubles as non zero weights take care of breaking the symmetry and even if bias is 0, the values in every neuron are still different.
 
 ### [Activation Functions](https://towardsdatascience.com/secret-sauce-behind-the-beauty-of-deep-learning-beginners-guide-to-activation-functions-a8e23a57d046)
 ![](https://cdn-images-1.medium.com/max/1600/1*p_hyqAtyI8pbt2kEl6siOQ.png)<br/>
