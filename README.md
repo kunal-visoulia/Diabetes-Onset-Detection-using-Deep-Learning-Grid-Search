@@ -121,16 +121,26 @@ In machine learning, Regularization reduces over-fitting by adding a penalty to 
 
 ### [Kernel Initializers](https://machinelearningmastery.com/why-initialize-a-neural-network-with-random-weights/)
 Initializations define the way to set the initial random weights of Keras layers.<br/>
-**Why Not Set Weights to Zero?**<br/>
-We can use the same set of weights each time we train the network; for example, you could use the values of 0.0 for all weights. In this case, the equations of the learning algorithm would fail to make any changes to the network weights, and the model will be stuck. It is important to note that the **bias weight in each neuron is set to zero by default, not a small random value**. Specifically, nodes that are side-by-side in a hidden layer connected to the same inputs must have different weights for the learning algorithm to update the weights. This is often referred to as the need to **break symmetry during training**.
-
-
-
 - Zeros: Initializer that generates tensors initialized to 0.
 - Ones: Initializer that generates tensors initialized to 1.
 - Constant: Initializer that generates tensors initialized to a constant value.
 - RandomNormal: Initializer that generates tensors with a normal distribution.
 - RandomUniform: Initializer that generates tensors with a uniform distribution.
+
+**Why Not Set Weights to Zero?**<br/>
+We can use the same set of weights each time we train the network; for example, you could use the values of 0.0 for all weights. In this case, the equations of the learning algorithm would fail to make any changes to the network weights, and the model will be stuck. It is important to note that the **bias weight in each neuron is set to zero by default, not a small random value**. Specifically, nodes that are side-by-side in a hidden layer connected to the same inputs must have different weights for the learning algorithm to update the weights. This is often referred to as the need to **break symmetry during training**.
+>Perhaps the only property known with complete certainty is that the initial parameters need to “break symmetry” between different units. If two hidden units with the same activation function are connected to the same inputs, then these units must have different initial parameters. If they have the same initial parameters, then a deterministic learning algorithm applied to a deterministic cost and model will constantly update both of these units in the same way.
+
+**When to Initialize to the Same Weights?**<br/>
+We could use the same set of random numbers each time the network is trained.This would not be helpful when evaluating network configurations. It may be helpful in order to train the same final set of network weights given a training dataset in the case where a model is being used in a production environment.
+
+**[Initializing the biases](http://cs231n.github.io/neural-networks-2/)**: It is possible and common to initialize the biases to be zero, since the asymmetry breaking is provided by the small random numbers in the weights. For ReLU non-linearities, some people like to use small constant value such as 0.01 for all biases because this ensures that all ReLU units fire in the beginning and therefore obtain and propagate some gradient.<br/>
+One of the most straightforward is initialization of weight and bias values and typical advice is to randomly initialize weights (to break symmetry) and initialize biases to zero.
+
+https://becominghuman.ai/basics-of-neural-network-bef2ba97d2cf
+Biases are weights added to hidden layers. They too are randomly initialised and updated in similar manner as the hidden layer. While the role of hidden layer is to map the shape of the underlying function in the data, the role of bias is to laterally shift the learned function so it overlaps with the original function.
+
+
 
 ### [Activation Functions](https://towardsdatascience.com/secret-sauce-behind-the-beauty-of-deep-learning-beginners-guide-to-activation-functions-a8e23a57d046)
 ![](https://cdn-images-1.medium.com/max/1600/1*p_hyqAtyI8pbt2kEl6siOQ.png)<br/>
