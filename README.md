@@ -13,7 +13,9 @@ Using **Grid Search**, I optimized/tuned the hyperparameters(selecting the best 
 
 - [Number of Epochs](#number-of-epochs)
 - [Batch Size](#batch-size)
-- [Learning Rate](#learning-rate)
+- [Learning Rate](#learning-rate): For adam optimizer
+    - [Loss Function](#the-loss-function)    
+    - [Optimizer](#optimizer)
 - [Dropout Rate (Regularization)](#dropout-rate)
 - [Kernel Initializors (uniform/normal/zero)](#kernel-initializors)
 - [Activation Functions (softmax/relu/tanh/linear)](#activation-functions)
@@ -26,7 +28,9 @@ Overall, ***the model showed an classification accuracy of 79%***
 ### [GridSearchCV]((https://scikit-learn.org/stable/modules/grid_search.html))
 Exhaustive search over specified parameter values for an estimator by considering all parameters combinations.
 
-**[Hyperparameters vs Parameters](https://scikit-learn.org/stable/modules/grid_search.html)**:Hyper-parameters are parameters that are not directly learnt within estimators. In scikit-learn they are passed as arguments to the constructor of the estimator classes. Typical examples include C, kernel and gamma for Support Vector Classifier, alpha for Lasso, etc. A typical set of hyperparameters for NN include the number and size of the hidden layers, weight initialization scheme, learning rate and its decay, dropout and gradient clipping threshold, etc.<br/>
+**[Hyperparameters vs Parameters](https://scikit-learn.org/stable/modules/grid_search.html)**:Hyper-parameters are parameters that are not directly learnt within estimators. In scikit-learn they are passed as arguments to the constructor of the estimator classes. Typical examples include C, kernel and gamma for Support Vector Classifier, alpha for Lasso, etc. A typical set of hyperparameters for NN include the number and size of the hidden layers, weight initialization scheme, learning rate and its decay, dropout### Learning Rate
+70
+ and gradient clipping threshold, etc.<br/>
 Parameters are those which would be learned by the machine like Weights and Biases.
 
 ### [Defining the Deep Learning model(in Keras)](https://keras.io/getting-started/sequential-model-guide/)
@@ -60,15 +64,63 @@ Total number of training examples present in a single batch or The batch size is
 
 ***Batch:*** At the end of the batch, the predictions are compared to the expected output variables and an error is calculated. From this error, the update algorithm is used to improve the model, e.g. move down along the error gradient.
 
->- Batch Gradient Descent: Batch Size = Size of Training Set <br/> - Stochastic Gradient Descent: Batch Size = 1 <br/> - Mini-Batch Gradient Descent: 1 < Batch Size < Size of Training Set
+>- Batch Gradient Descent: Batch Size = Size of Training Set <br/> 
+>- Stochastic Gradient Descent: Batch Size = 1 <br/>
+>- Mini-Batch Gradient Descent: 1 < Batch Size < Size of Training Set
 
 ***Iterations:*** Iterations is the number of batches needed to complete one epoch.<br/>
 
 >***We can divide the dataset of 2000 examples into batches of 500 then it will take 4 iterations to complete 1 epoch.<br/> or Assume you have a dataset with 200 samples (rows of data) and you choose a batch size of 5 and 1,000 epochs.This means that the dataset will be divided into 40 batches, each with five samples. The model weights will be updated after each batch of five samples.This also means that one epoch will involve 40 batches or 40 updates to the model.With 1,000 epochs, the model will be exposed to or pass through the whole dataset 1,000 times. That is a total of 40,000 batches during the entire training process.***
 
 ### Learning Rate
+Using the Adam optimizer, Hypertuning the learning rate.I used binary_crossentropy as loss function. <br/>
+  1. [The Loss Function](https://blog.algorithmia.com/introduction-to-loss-functions/):  it’s a method of evaluating how        well your algorithm models your dataset. As you change pieces of your algorithm to try and improve your model, your loss    function will tell you if you’re getting anywhere.
+      https://medium.com/data-science-group-iitr/loss-functions-and-optimization-algorithms-demystified-bb92daff331c
+      - Regressive loss functions: They are used in case of regressive problems, that is when the target variable is                 continuous. Most widely used regressive loss function is Mean Square Error. Other loss functions are:
+            1. Absolute error — measures the mean absolute value of the element-wise difference between input;
+            2. Smooth Absolute Error — a smooth version of Abs Criterion.
+      - Classification loss functions:The output variable in classification problem is usually a probability value f(x),             called the score for the input x. Generally, the magnitude of the score represents the confidence of our prediction.         The target variable y, is a binary variable, 1 for true and -1 for false. 
+        On an example (x,y), the margin is defined as yf(x). The margin is a measure of how correct we are. Most                     classification losses mainly aim to maximize the margin. Some classification algorithms are:
+            1. Binary Cross Entropy 
+            2. Negative Log Likelihood
+            3. Margin Classifier
+            4. Soft Margin Classifier
 
-### Dropout Rate
+      - Embedding loss functions: It deals with problems where we have to measure whether two inputs are similar or                 dissimilar. Some examples are:
+            1. L1 Hinge Error- Calculates the L1 distance between two inputs.
+            2. Cosine Error- Cosine distance between two inputs.
+
+**During the training process, we tweak and change the parameters (weights) of our model to try and minimize that loss function, and make our predictions as correct as possible. But how exactly do you do that? How do you change the parameters of your model, by how much, and when?  *This is where optimizers come in.***    
+  2. [Optimizer](https://blog.algorithmia.com/introduction-to-optimizers/): They tie together the loss function and model      parameters by updating the model in response to the output of the loss function. In simpler terms, optimizers shape and      mold your model into its most accurate possible form by futzing with the weights. The loss function is the guide to the      terrain, telling the optimizer when it’s moving in the right or wrong direction.
+   > think of a hiker trying to get down a mountain with a blindfold on. It’s impossible to know which direction to go in,        but there’s one thing she can know: if she’s going down (making progress) or going up (losing progress). Eventually, if      she keeps taking steps that lead her downwards, she’ll reach the base.Similarly, it’s impossible to know what your          model’s weights should be right from the start. But with some trial and error based on the loss function (whether the        hiker is descending), you can end up getting there eventually.
+  
+   Popular optimizers are Gradient Descent((backpropagation is basically gradient descent implemented on a network),            Stochastic Gradient Descent. Other optimizers based on gradient descent:
+   1. Adagrad: Adagrad adapts the learning rate specifically to individual features, that means that some of the weights in       your dataset will have different learning rates than others.<br/>
+      This works really well for sparse datasets where a lot of input examples are missing.<br/>
+      Adagrad has a major issue though: the adaptive learning rate tends to get really small over time. *Some other optimizers below seek to eliminate this problem.*
+
+   2. RMSprop: RMSprop is similar to Adaprop, which is another optimizer that seeks to solve some of the issues that Adagrad       leaves open. Instead of letting all of the gradients accumulate for momentum, it only accumulates gradients in a fixed       window. 
+
+   3. Adam: Adam stands for adaptive moment estimation, and is another way of using past gradients to calculate current           gradients. Adam also utilizes the concept of momentum by adding fractions of previous gradients to the current one.         This optimizer has become pretty widespread, and is practically accepted for use in training neural nets.
+   
+### [Dropout Rate](https://medium.com/@amarbudhiraja/https-medium-com-amarbudhiraja-learning-less-to-learn-better-dropout-in-deep-machine-learning-74334da4bfc5)
+Dropout is an approach to regularization in neural networks which helps reducing interdependent learning amongst the neurons
+by ignoring units (i.e. neurons) during the training phase of certain set of neurons which is chosen at random. These units are not considered during a particular forward or backward pass. <br/>
+This is to **prevent over-fitting**, A fully connected layer occupies most of the parameters, and hence, neurons develop co-dependency amongst each other during training which curbs the individual power of each neuron leading to over-fitting of training data.
+
+In machine learning, Regularization reduces over-fitting by adding a penalty to the loss function. By adding this penalty, the model is trained such that it does not learn interdependent set of features weights. Regularization techniques: [L1 (Laplacian) and L2 (Gaussian) penalties](https://towardsdatascience.com/l1-and-l2-regularization-methods-ce25e7fc831c).<bt/>
+**Training Phase:**: For each hidden layer, for each training sample, for each iteration, ignore (zero out) a random fraction, p, of nodes (and corresponding activations).
+
+**Testing Phase:** Use all activations, but reduce them by a factor p (to account for the missing activations during training).
+
+>Some Observations:<br/>
+1. Dropout forces a neural network to learn more robust features that are useful in conjunction with many different random subsets of the other neurons.
+2. Dropout roughly doubles the number of iterations required to converge. However, training time for each epoch is less.
+3. With H hidden units, each of which can be dropped, we have 2^H possible models. In testing phase, the entire network is considered and each activation is reduced by a factor p.
+
 ### Kernel Initializers
+
+
 ### Activation Functions
+![](https://cdn-images-1.medium.com/max/1600/1*p_hyqAtyI8pbt2kEl6siOQ.png)
 ### Number of Neurons in each hidden layer
